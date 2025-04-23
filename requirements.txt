@@ -1,4 +1,4 @@
 fastapi
 uvicorn
 flask
-yt-dlp -u
+yt-dlp -U
