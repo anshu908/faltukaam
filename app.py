@@ -6,7 +6,7 @@ app = Flask(__name__)
 
 @app.route('/')
 def home():
-    return "XHamster Downloader API is running."
+    return "✅ XHamster Downloader API is running."
 
 @app.route('/download', methods=['GET'])
 def download_video():
@@ -17,8 +17,8 @@ def download_video():
     ydl_opts = {
         'format': 'best',
         'merge_output_format': 'mp4',
-        'outtmpl': 'downloads/%(title)s.%(ext)s',
-        'noplaylist': True
+        'outtmpl': '%(title)s.%(ext)s',  # Save in current folder
+        'noplaylist': True,
     }
 
     try:
@@ -32,3 +32,6 @@ def download_video():
             })
     except Exception as e:
         return jsonify({"error": str(e)}), 500
+
+if __name__ == '__main__':
+    app.run(host='0.0.0.0', port=8000)
